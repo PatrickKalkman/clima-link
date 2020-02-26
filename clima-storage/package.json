@@ -1,0 +1,11 @@
+{
+  "name": "clima-storage",
+  "version": "1.0.0",
+  "description": "Storage for clima-link",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Patrick Kalkman",
+  "license": "MIT"
+}

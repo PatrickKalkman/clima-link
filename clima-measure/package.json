@@ -1,0 +1,11 @@
+{
+  "name": "clima-measure",
+  "version": "1.0.0",
+  "description": "mqtt client for measurements",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Patrick Kalkman",
+  "license": "MIT"
+}
