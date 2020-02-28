@@ -4,8 +4,22 @@
   "description": "Storage for clima-link",
   "main": "index.js",
   "scripts": {
+    "start": "./node_modules/nodemon/bin/nodemon.js ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Patrick Kalkman",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "influx": "^5.5.1",
+    "mqtt": "^3.0.0",
+    "pino": "^5.16.0",
+    "pino-pretty": "^3.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "nodemon": "^2.0.2"
+  }
 }
