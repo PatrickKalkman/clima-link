@@ -9,12 +9,16 @@ const dotenv = require('dotenv').config();
 
 const config = require('./lib/config');
 const log = require('./lib/log');
+const broker = require('./lib/broker');
 
 const app = {};
 
 app.init = function init() {
-  log.info('Started mqtt broker');
-  app.notifyStatus();
+  broker.listen(() => {
+    broker.setupAuthentication();
+    log.info('Started mqtt broker');
+    app.notifyStatus();
+  });
 };
 
 app.notifyStatus = function notifyStatus() {
@@ -26,6 +30,7 @@ app.notifyStatus = function notifyStatus() {
 };
 
 app.shutdown = function shutdown() {
+  broker.close();
   clearInterval(app.intervalTimer);
   process.exit();
 };

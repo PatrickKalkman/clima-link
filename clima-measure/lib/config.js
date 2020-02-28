@@ -8,9 +8,13 @@ const constants = require('./constants');
 const environments = {};
 
 environments.production = {
-  mqttBrokerUrl: process.env.MQTT_BROKER_URL,
-  mqttBrokerPort: process.env.MQTT_PORT,
-  mqttPublishTopic: '/sensor/out/temperature',
+  mqtt: {
+    broker: process.env.MQTT_BROKER_HOST,
+    port: process.env.MQTT_BROKER_PORT,
+    topic: '/sensor/out/temperature',
+    username: process.env.MQTT_USERNAME,
+    password: process.env.MQTT_PASSWORD,
+  },
   envName: constants.ENVIRONMENTS.PRODUCTION,
   log: {
     level: process.env.LOG_LEVEL,
@@ -20,18 +24,24 @@ environments.production = {
   },
 };
 
+
 environments.development = {
-  mqttBrokerUrl: process.env.MQTT_BROKER_URL,
-  mqttBrokerPort: process.env.MQTT_PORT,
-  mqttPublishTopic: '/sensor/out/temperature',
+  mqtt: {
+    broker: process.env.MQTT_BROKER_HOST,
+    port: process.env.MQTT_BROKER_PORT,
+    topic: '/sensor/out/temperature',
+    username: process.env.MQTT_USERNAME,
+    password: process.env.MQTT_PASSWORD,
+  },
   envName: constants.ENVIRONMENTS.DEVELOPMENT,
   log: {
     level: process.env.LOG_LEVEL,
   },
   measurement: {
-    readInterval: 5,
+    readInterval: 1,
   },
 };
+
 
 // Determine which environment was passed as a command-line argument
 const currentEnvironment = typeof process.env.NODE_ENV === 'string' ? process.env.NODE_ENV.toLowerCase() : '';

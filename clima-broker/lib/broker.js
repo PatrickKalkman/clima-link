@@ -10,43 +10,39 @@ const config = require('./config');
 
 const broker = {};
 
-broker.listen = function connect(cb) {
+broker.listen = function listen(cb) {
   broker.aedes = aedes();
 
   const options = {
-    key: fs.readFileSync('broker_private.pem'),
-    cert: fs.readFileSync('broker_public.pem'),
+    key: fs.readFileSync('./certificates/broker-private.pem'),
+    cert: fs.readFileSync('./certificates/broker-public.pem'),
   };
 
   broker.server = tls.createServer(options, broker.aedes.handle);
 
-  log.info(`Starting MQTT broker on port:${config.mqttBrokerPort}`);
+  log.info(`Starting MQTT broker on port:${config.mqtt.port}`);
 
-  broker.server.listen(config.mqttBrokerPort);
+  broker.server.listen(config.mqtt.port);
 
   cb();
 };
 
-broker.disconnect = function disconnect(cb) {
-  broker.server.aedes.close(() => {
+broker.close = function close(cb) {
+  broker.aedes.close(() => {
     log.info('Broker is closed');
     cb();
   });
 };
 
-broker.authenticate = function authenticate() {
+broker.setupAuthentication = function setupAuthentication() {
   broker.aedes.authenticate = (client, username, password, cb) => {
-    if (
-      username &&
-      typeof username === 'string' &&
-      username === config.mqtt.username &&
-      password &&
-      typeof password === 'string' &&
-      password === config.mqtt.password
-    ) {
-      cb(null, true);
+    if (username && typeof username === 'string' && username === config.mqtt.username) {
+      if (password && typeof password === 'object' && password.toString() === config.mqtt.password) {
+        cb(null, true);
+        log.info('authenticated successfully');
+      }
     } else {
-      cb(null, false);
+      cb(false, false);
     }
     // const error = new Error(`Could not authenticate client ${client}`);
     // error.returnCode = 4;

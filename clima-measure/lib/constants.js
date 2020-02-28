@@ -10,37 +10,4 @@ module.exports = Object.freeze({
     DEVELOPMENT: 'development',
   },
 
-  HLS: 'hls',
-
-  RESPONSE_TYPES: {
-    JSON: 'json',
-    STREAM: 'stream',
-    HTML: 'html',
-  },
-
-  LOG_LEVELS: {
-    ERROR: 4,
-    WARNING: 3,
-    INFORMATION: 2,
-    DEBUG: 1,
-  },
-
-  WORKFLOW_STATUS: {
-    NEW: 'new',
-    QUEUED: 'queued',
-    INPROGRESS: 'inprogress',
-    ERROR: 'error',
-    DONE: 'done',
-  },
-
-  TASK_TYPES: {
-    ENCODING: 'encoding',
-    PACKAGING: 'packaging',
-  },
-
-  ENCODER_TYPES: {
-    X265: 'libx265',
-    X264: 'libx264',
-    VP9: 'libvpx-vp9',
-  },
 });
