@@ -1,9 +1,10 @@
-FROM node:12-alpine 
+FROM arm32v7/node:12-alpine
 
 EXPOSE 8181
 
 # Create the work dir and set permissions as WORKDIR set the permissions as root
 RUN mkdir /home/node/app/ && chown -R node:node /home/node/app
+RUN mkdir /home/node/app/certificates && chown -R node:node /home/node/app/certificates
 
 WORKDIR /home/node/app
 
@@ -17,5 +18,6 @@ RUN npm install --only=prod && npm cache clean --force --loglevel=error
 # Copy app source
 COPY --chown=node:node index.js .
 COPY --chown=node:node lib ./lib/
+COPY --chown=node:node certificates ./certificates/
 
 CMD [ "node", "index.js"]

@@ -9,7 +9,7 @@ const storage = {};
 
 storage.connect = function connect(cb) {
   storage.influx = new Influx.InfluxDB({
-    host: 'localhost',
+    host: config.database.host,
     database: config.database.name,
     username: config.database.user,
     password: config.database.password,
@@ -33,14 +33,13 @@ storage.connect = function connect(cb) {
 };
 
 storage.save = function save(message, cb) {
-  log.info(`message: ${message.timeStamp} ${message.temperature}`);
+  log.info(`Storing message: ${message.temperature} ${message.timeStamp}`);
   storage.influx.writePoints([
     {
       measurement: 'temperature',
       fields: {
         temperature: message.temperature,
       },
-      tags: { host: 'test' },
       timestamp: message.timeStamp,
     },
   ]).then(cb);

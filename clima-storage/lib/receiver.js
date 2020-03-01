@@ -19,7 +19,7 @@ receiver.connect = function connect(connectCallback, messageCallback) {
     password: config.mqtt.password,
   };
 
-  log.info(`Trying to connect to the MQTT broker at ${config.mqtt.broker} on port ${config.mqtt.port} ${config.mqtt.username}`);
+  log.info(`Trying to connect to the MQTT broker at ${config.mqtt.broker} on port ${config.mqtt.port}`);
 
   receiver.client = mqtt.connect(connectOptions);
 

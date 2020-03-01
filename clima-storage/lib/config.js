@@ -20,12 +20,12 @@ environments.production = {
     level: process.env.LOG_LEVEL,
   },
   database: {
-    name: 'clima_storage_db',
-    username: 'username',
-    password: 'password',
+    name: process.env.DATABASE_NAME,
+    username: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    host: process.env.DATABASE_HOST,
   },
 };
-
 
 environments.development = {
   mqtt: {
@@ -40,9 +40,10 @@ environments.development = {
     level: process.env.LOG_LEVEL,
   },
   database: {
-    name: 'clima_storage_db',
-    username: 'username',
-    password: 'password',
+    name: process.env.DATABASE_NAME,
+    username: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    host: process.env.DATABASE_HOST,
   },
 };
 

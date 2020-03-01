@@ -39,14 +39,11 @@ broker.setupAuthentication = function setupAuthentication() {
     if (username && typeof username === 'string' && username === config.mqtt.username) {
       if (password && typeof password === 'object' && password.toString() === config.mqtt.password) {
         cb(null, true);
-        log.info('authenticated successfully');
+        log.info(`Client: ${client} authenticated successfully`);
       }
     } else {
       cb(false, false);
     }
-    // const error = new Error(`Could not authenticate client ${client}`);
-    // error.returnCode = 4;
-    // cb(error, null);
   };
 };
 

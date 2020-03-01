@@ -36,9 +36,7 @@ environments.development = {
   log: {
     level: process.env.LOG_LEVEL,
   },
-  measurement: {
-    readInterval: 5,
-  },
+  notifyInterval: 10,
 };
 
 // Determine which environment was passed as a command-line argument

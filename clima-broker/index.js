@@ -22,11 +22,11 @@ app.init = function init() {
 };
 
 app.notifyStatus = function notifyStatus() {
-  log.info('MQTT Broker running...');
+  log.info('MQTT Broker is running correctly...');
 
   app.intervalTimer = setTimeout(() => {
     app.notifyStatus();
-  }, config.measurement.readInterval * 1000);
+  }, config.notifyInterval * 1000);
 };
 
 app.shutdown = function shutdown() {
