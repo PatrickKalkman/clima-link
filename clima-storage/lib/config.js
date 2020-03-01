@@ -11,7 +11,7 @@ environments.production = {
   mqtt: {
     broker: process.env.MQTT_BROKER_HOST,
     port: process.env.MQTT_BROKER_PORT,
-    topic: '/sensor/out/temperature',
+    topic: 'house/bedroom/temperature',
     username: process.env.MQTT_USERNAME,
     password: process.env.MQTT_PASSWORD,
   },
@@ -31,7 +31,7 @@ environments.development = {
   mqtt: {
     broker: process.env.MQTT_BROKER_HOST,
     port: process.env.MQTT_BROKER_PORT,
-    topic: '/sensor/out/temperature',
+    topic: 'house/bedroom/temperature',
     username: process.env.MQTT_USERNAME,
     password: process.env.MQTT_PASSWORD,
   },

@@ -10,7 +10,7 @@ services:
       - INFLUXDB_USER=climalink
       - INFLUXDB_USER_PASSWORD=secretuser
     volumes:
-      - ./data/clima-influx.db:/var/lib/clima-influx.db
+      - ./data:/var/lib/influx.db
     ports:
       - '8086:8086'
     networks: 
@@ -46,7 +46,7 @@ services:
       - MQTT_BROKER_PORT=8883
       - MQTT_USERNAME=brokerusername
       - MQTT_PASSWORD=brokerpassword
-      - NODE_ENV=development
+      - NODE_ENV=production
     networks: 
       - clim-network
 networks:
