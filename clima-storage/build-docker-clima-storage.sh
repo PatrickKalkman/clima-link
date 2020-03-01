@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="0.5.4"
+VERSION="0.5.6"
 ARCH="arm32v7"
 APP="clima-storage"
 docker buildx build -f ./Dockerfile-$APP-$ARCH -t $APP:$VERSION . --load

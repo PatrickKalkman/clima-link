@@ -19,9 +19,7 @@ environments.production = {
   log: {
     level: process.env.LOG_LEVEL,
   },
-  measurement: {
-    readInterval: 1,
-  },
+  notifyInterval: 10,
 };
 
 environments.development = {

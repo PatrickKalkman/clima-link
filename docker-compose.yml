@@ -1,7 +1,7 @@
 version: '2'
 services:
   clima-db:
-    image: 'arm32v7/influxdb'
+    image: 'arm32v7/influxdb:1.7.10'
     container_name: 'clima-db'
     environment:
       - INFLUXDB_DB=climalink
@@ -16,7 +16,7 @@ services:
     networks: 
       - clim-network
   clima-storage:
-    image: 'pkalkman/clima-storage:0.5.4'
+    image: 'pkalkman/clima-storage:0.5.6'
     container_name: 'clima-storage'
     environment:
       - MQTT_BROKER_HOST=clima-broker
@@ -30,7 +30,7 @@ services:
     networks: 
       - clim-network
   clima-broker:
-    image: 'pkalkman/clima-broker:0.5.4'
+    image: 'pkalkman/clima-broker:0.5.6'
     container_name: 'clima-broker'
     environment:
       - MQTT_BROKER_PORT=8883
@@ -39,7 +39,7 @@ services:
     networks:
       - clim-network
   clima-measure: 
-    image: 'pkalkman/clima-measure:0.5.4'
+    image: 'pkalkman/clima-measure:0.5.6'
     container_name: 'clima-measure'
     environment:
       - MQTT_BROKER_HOST=clima-broker
