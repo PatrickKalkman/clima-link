@@ -30,7 +30,7 @@ app.measureAndSend = function measureAndSend() {
         if (transmitErr) {
           log.error(`An error occurred while publishing the measurement. Err: ${transmitErr}`);
         } else {
-          log.info('Successfully transmitted');
+          log.info('Successfully send message to mqtt broker');
         }
       });
     } else {

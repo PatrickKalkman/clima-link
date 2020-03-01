@@ -5,6 +5,7 @@ const mqtt = require('mqtt');
 
 const log = require('./log');
 const config = require('./config');
+const helper = require('./helpers');
 
 const receiver = {};
 
@@ -26,10 +27,11 @@ receiver.connect = function connect(connectCallback, messageCallback) {
     log.info(`Connected successfully to the MQTT broker at ${config.mqtt.broker} on port ${config.mqtt.port}`);
 
     receiver.client.subscribe(config.mqtt.topic);
+
     receiver.client.on('message', (topic, message) => {
-      log.info(`incoming message: ${topic} ${message}`);
       if (topic === config.mqtt.topic) {
-        messageCallback(message);
+        const parsedMessage = helper.parseJsonToObject(message.toString());
+        messageCallback(parsedMessage);
       }
     });
 

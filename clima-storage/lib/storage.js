@@ -2,9 +2,8 @@
  * Sensor responsible for reading the temperature sensor
  */
 const Influx = require('influx');
-
-const log = require('./log');
 const config = require('./config');
+const log = require('./log');
 
 const storage = {};
 
@@ -31,21 +30,24 @@ storage.connect = function connect(cb) {
     }
     return null;
   }).then(cb);
-
 };
 
 storage.save = function save(message, cb) {
+  log.info(`message: ${message.timeStamp} ${message.temperature}`);
   storage.influx.writePoints([
     {
       measurement: 'temperature',
       fields: {
         temperature: message.temperature,
       },
+      tags: { host: 'test' },
       timestamp: message.timeStamp,
     },
   ]).then(cb);
 };
 
-storage.disconnect = function disconnect(cb) {};
+storage.disconnect = function disconnect(cb) {
+  cb();
+};
 
 module.exports = storage;

@@ -24,6 +24,7 @@ app.init = function init() {
   receiver.connect(
     () => { log.info('Successfully connected to the mqtt broker'); },
     (message) => {
+
       storage.save(message, (err) => {
         if (err) {
           log.error(`An error occurred while trying to store the incoming message. ${err}`);

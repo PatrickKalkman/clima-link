@@ -16,7 +16,7 @@ sensor.read = function read(cb) {
       if (!err) {
         cb(null, temp);
       } else {
-        log.error(`An error occurred while trying to read the temperature sensor. Err: ${err}`);
+        log.error(`An error occurred while trying to read the temperature sensor. ${err}`);
         cb(err);
       }
     });
