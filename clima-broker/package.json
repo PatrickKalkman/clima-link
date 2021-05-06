@@ -10,7 +10,7 @@
   "author": "Patrick Kalkman",
   "license": "MIT",
   "dependencies": {
-    "aedes": "^0.40.1",
+    "aedes": "^0.42.1",
     "dotenv": "^8.2.0",
     "pino": "^5.16.0",
     "pino-pretty": "^3.6.0"
