@@ -12,7 +12,7 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "ds18b20-raspi": "^0.3.4",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "mqtt": "^3.0.0",
     "pino": "^5.16.0",
     "pino-pretty": "^3.6.0"
